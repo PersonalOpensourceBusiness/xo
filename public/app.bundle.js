@@ -25078,7 +25078,7 @@
 	        key: 'renderStartScreen',
 	        value: function renderStartScreen() {
 	            var tpl = _.template(document.querySelector('#start-screen').innerHTML);
-	            this.app.innerHTML = tpl({ title: 'XO-unlimited' });
+	            this.app.innerHTML = tpl({ title: 'XO' });
 
 	            this.button = {
 	                create: document.querySelector('#create'),
@@ -25089,7 +25089,7 @@
 	        key: 'renderSettingsScreen',
 	        value: function renderSettingsScreen() {
 	            var tpl = _.template(document.querySelector('#settings-screen').innerHTML);
-	            this.app.innerHTML = tpl({ title: 'XO-unlimited' });
+	            this.app.innerHTML = tpl({ title: 'XO' });
 
 	            this.form = document.querySelector('form');
 	        }
