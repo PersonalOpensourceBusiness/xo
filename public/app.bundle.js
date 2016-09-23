@@ -17272,7 +17272,7 @@
 	    function Socket(matrix, game, config) {
 	        _classCallCheck(this, Socket);
 
-	        this.socket = (0, _socket2.default)('http://localhost:5000');
+	        this.socket = (0, _socket2.default)('http://' + window.location.hostname);
 	        this.matrix = matrix;
 	        this.game = game;
 	        this.config = config;
