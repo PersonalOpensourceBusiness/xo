@@ -17146,7 +17146,8 @@
 	            var _this = this;
 
 	            var result = 0;
-	            document.querySelector('audio').play();
+	            socket.socket.emit('audio:click');
+
 	            this.cells = config.size * config.size;
 	            if (!this.matrix.matrix[this.y][this.x]) {
 	                this.matrix.matrix[this.y][this.x] = this.who;
@@ -17317,6 +17318,10 @@
 	                    who: data.who,
 	                    room: data.room
 	                });
+	            });
+
+	            this.socket.on('click', function () {
+	                document.querySelector('audio').play();
 	            });
 	        }
 	    }, {

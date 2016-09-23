@@ -105,6 +105,10 @@ io.on('connection', function(socket) {
     socket.on('get:size', function() {
         io.sockets.emit('size', ns.config.size);
     })
+
+    socket.on('audio:click', function() {
+        io.sockets.emit('click');
+    })
 });
 
 var mergeArrays = data => {

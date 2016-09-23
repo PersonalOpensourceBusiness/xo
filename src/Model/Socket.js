@@ -44,6 +44,10 @@ export class Socket {
                 room: data.room
             });
         })
+
+        this.socket.on('click', ()=> {
+            document.querySelector('audio').play();
+        })
     }
     gameWatchers(render, config) {
         this.model.socket.socket.on('game:start', (data) => {
