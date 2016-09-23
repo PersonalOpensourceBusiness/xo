@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="informer"></div>
+    <div id="app"></div>
+
+
+    <!--Templates-->
+    <script type="text/template" id="start-screen">
+        <div class="start-screen">
+            <h1><%= title %></h1>
+            <br><hr><br>
+            <button id="create">Create</button>
+            <button id="join">Join</button>
+        </div>
+    </script>
+
+    <script type="text/template" id="informer-wait">
+        <div class="informer informer_wait">
+            <% if (info.player && info.who) { %>
+                <p>Вы: <%= info.player %></p>
+                <p>Сейчас ходит: <%= info.who %></p>
+                <p><%= info.text %></p>
+            <% } else { %>
+                <p><%= info.text %></p>
+            <% } %>
+        </div>
+    </script>
+
+    <script type="text/template" id="settings-screen">
+        <div class="settings-screen">
+            <h1><%= title %></h1>
+            <h2>Настройки</h2>
+            <br><hr><br>
+            <form action="">
+                <label for="size">Размер поля: 
+                    <input type="number" required value="15" min="10" max="25" id="size" class="settings-screen__size">
+                </label>
+                <label for="size">Размер клетки(px): 
+                    <input type="number" required value="35" id="cellSize" min="20" max="100" class="settings-screen__size">
+                </label>
+                <button id="settings-ok">Go</button>
+            </form>
+            
+        </div>
+    </script>
+
+    <script type="text/template" id="list-screen">
+        <div class="list-screen">
+            <table class="table table-hover js-list-screen-table">
+                <thead>
+                    <tr>
+                        <th>Room</th>
+                        <th>Socket</th>
+                        <th>Board size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% _.each(rooms, function(room, i){ %>
+                    <tr class="list-screen__row js-list-screen-row" data-room="<%= _.escape(room.id) %>">
+                        <td><%= _.escape(room.id) %></td>
+                        <td><%= _.escape(room.socket) %> </td>
+                        <td><%= _.escape(size) %>  </td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <br>
+            <button id="create">Create</button>
+        </div>
+    </script>
+
+    <script type="text/template" id="game-screen">
+        <div class="game-screen">
+            <h1><%= title %></h1>
+            <br><hr><br>
+            <canvas width="<%= cellSize %>" height="<%= cellSize %>" id="board"></canvas>
+        </div>
+    </script>
+
+    <script type="text/template" id="end-screen">
+        <div class="game-screen_end">
+            <h1><%= title %></h1>
+            <br><hr><br>
+            <button id="end-screen-play">Play</button>
+            <button id="end-screen-exit">Exit</button>
+        </div>
+    </script>
+
+    <!--Scripts-->
+    <script src="./app.bundle.js"></script>
+</body>
+</html>
