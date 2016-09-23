@@ -17146,6 +17146,7 @@
 	            var _this = this;
 
 	            var result = 0;
+	            document.querySelector('audio').play();
 	            this.cells = config.size * config.size;
 	            if (!this.matrix.matrix[this.y][this.x]) {
 	                this.matrix.matrix[this.y][this.x] = this.who;
