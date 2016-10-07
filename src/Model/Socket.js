@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 
 export class Socket {
     constructor(matrix, game, config) {
-        this.socket = io('http://localhost:5000');
+        this.socket = io('https://' + window.location.hostname);
         this.matrix = matrix;
         this.game = game;
         this.config = config;
